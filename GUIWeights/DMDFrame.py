@@ -1,7 +1,7 @@
 from customtkinter import *
 from tkinter.filedialog import askdirectory
 
-
+#初始化DMD
 class DMDFrame(CTkFrame):
     def __init__(self, master=None, dmd=None):
         super().__init__(master=master, border_width=2)
@@ -36,7 +36,8 @@ class DMDFrame(CTkFrame):
         self.text_loop_num = None
         self.text_trigger_fre = None
         self.dmd = dmd
-
+    
+    #创建功能button
     def create_widget(self):
         self.label_trigger_fre = CTkLabel(self, text='触发频率', width=15, height=1)
         self.label_trigger_fre.grid(row=1, column=0, pady=10)
@@ -130,7 +131,8 @@ class DMDFrame(CTkFrame):
         # message_box = CTkTextbox(message_Frame, width=70, height=20, bd=3, wrap='char')
         # message_box.grid(row=0, column=0)
         # message_box["state"] = DISABLED
-
+    
+    #选择mask路径
     def select_mask_pth(self):
         pth = askdirectory(initialdir=self.master.mask_pth.get())
         if pth == "":
@@ -138,6 +140,6 @@ class DMDFrame(CTkFrame):
         else:
             pth = pth.replace("/", "\\")
             self.master.mask_pth.set(pth)
-
+    #获取DMD参数
     def set_dmd(self, dmd):
         self.dmd = dmd
